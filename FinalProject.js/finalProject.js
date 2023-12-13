@@ -7,16 +7,39 @@ class Players {
     }
 }
 //: Classes for deck, card, and players
-Deck = {
-    cards: [14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2],
-    deck: [],
-    for(card = 0 , card < this.cards.length, i++);{
-        this.deck.push(newCard({faceValue: this.cards[card]}));
+class Deck = {
+    constructor() {
+        this.deck = [];
+        this.ranks = [
+          "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "A"];
+    this.suits = ["Clubs", "Diamonds", "Hearts", "Spades"]
+    }
+
+    createDeck() {
+        for (let i = 0; i < this.suits.length; i++) {
+            for (let j = 0; j < this.suits.length; j++ {
+                let card = {
+                    value j + 1,
+                    name: `${this.ranks[j]} of ${this.suits[j]}`
+            }
+            this.deck.push(card)
+        }
     }
 }
+shuffledDeck() {
+    for (let i = this.deck.length - 1; i > 0; i--){
+        let j = Math.floor(Math.random() * (i + 1));
+        [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+    }
+}
+}
 
-Deck.StartGame("Player One", "Player Two");
-function;("Game Rule"); playerOne, playerTwo;{
+const deck = new Deck
+deck.createDeck()
+deck.shuffledDeck()
+
+
+function GameRule(playerOne, playerTwo){
     if ((playerOne.wonDeck.length === 0 && (playerOne.currentDeck.length === 0))){
         playerOne.GameOver(PlayerTwo);
         PlayerOneWins(playerOne);
@@ -170,39 +193,7 @@ Player.prototype.GameOver = function(opponent){
     PlayerWins(opponent);
 }
 
-Deck = {
-    cards:[14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2],
-    deck : [],
-    shuffledDeck: [],
-}
 
-ShuffledDeck: function(unshuffledDeck, ShuffledDeck){
-    while(unshuffledDeck.length){
-        var index = Math.floor(Math.random() * unshuffledDeck.length);
-        shuffledDeck.push(unshuffledDeck.splice(index, 1)[0]);
-    }
-    unshuffledDeck = [];
-}
 
-DistributeCards : function (player1Deck, player2Deck){
-    for(var i = 0; i < this.shuffledDeck[i]);
-    player1Deck.push(this.shuffledDeck[i]);
-    player2Deck.push(this.shuffledDeck[this.shuffledDeck.length - i - 1]);
-}
-
-DealWarCards : function (player, num){
-    for(var i = 0; i< num; i++){
-        player.GetCurrentCard();
-        player.warDeck.push(player.currentCard);
-    }
-
-    console.log(player);
-}
-
-StartGame : function(playerOne, playerTwo){
-    this.BuildDeck();
-    this.ShuffledDeck(this.deck, this.shuffledDeck);
-    this.DistributeCards(playerOne.currentDeck, playerTwo.currentDeck);
-} 
 
 
